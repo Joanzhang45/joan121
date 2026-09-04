@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="robots" content="noindex">
+<title>張瓊安 · BNI 華都更分會 一對一</title>
+<style>
+  :root {
+    --red: #C8102E;
+    --gold: #C8A04F;
+    --white: #FFFFFF;
+    --grey: #F5F5F5;
+    --text: #1A1A1A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+
+  section.grey {
+    background: var(--grey);
+  }
+
+  section.grey .wrap {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  p { font-size: 15px; }
+
+  .muted { color: #555555; font-size: 14px; }
+
+  /* ---------- 區塊 0：開場 ---------- */
+  #hero {
+    padding: 56px 0 40px;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0 auto 20px;
+  }
+
+  #hero .name {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  #hero .name .nick {
+    font-size: 16px;
+    font-weight: 400;
+    color: #555555;
+    margin-left: 6px;
+  }
+
+  #hero .role {
+    font-size: 15px;
+    color: #555555;
+    margin-top: 10px;
+  }
+
+  #hero .role strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .badge-gold {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  #hero .tagline {
+    margin-top: 22px;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.6;
+    border-top: 1px solid #E5E5E5;
+    padding-top: 22px;
+  }
+
+  #hero .tagline .red { color: var(--red); }
+
+  /* ---------- 時間軸 ---------- */
+  .timeline {
+    margin-top: 8px;
+  }
+
+  .tl-item {
+    position: relative;
+    padding-left: 24px;
+    padding-bottom: 24px;
+    border-left: 2px solid var(--grey);
+  }
+
+  .tl-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+
+  .tl-item .tl-title {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .tl-item .tl-body {
+    font-size: 14px;
+    color: #444444;
+    margin-top: 4px;
+  }
+
+  /* ---------- 資料表 ---------- */
+  .infotable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .infotable tr {
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  .infotable tr:last-child {
+    border-bottom: none;
+  }
+
+  .infotable th, .infotable td {
+    text-align: left;
+    padding: 12px 0;
+    font-size: 14px;
+    vertical-align: top;
+  }
+
+  .infotable th {
+    width: 34%;
+    color: #777777;
+    font-weight: 500;
+  }
+
+  .infotable td {
+    font-weight: 600;
+  }
+
+  /* ---------- GAINS ---------- */
+  .gains-block {
+    margin-bottom: 22px;
+  }
+
+  .gains-block:last-child { margin-bottom: 0; }
+
+  .gains-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--red);
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .gains-block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .gains-block li {
+    font-size: 14.5px;
+    padding: 4px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .gains-block li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ---------- 服務總覽 ---------- */
+  .service-card {
+    background: var(--white);
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+
+  .service-card:last-of-type { margin-bottom: 0; }
+
+  .service-num {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .service-card h3 { margin-bottom: 6px; }
+
+  .service-card .one-liner {
+    font-size: 14.5px;
+    color: #333333;
+    margin-bottom: 8px;
+  }
+
+  .service-card .billing {
+    font-size: 13.5px;
+    color: #666666;
+    background: var(--grey);
+    padding: 8px 10px;
+    border-radius: 3px;
+  }
+
+  .service-card .billing b {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .note-bottom {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 13px;
+    color: #777777;
+  }
+
+  /* ---------- 服務詳頁 ---------- */
+  .service-page {
+    padding: 44px 0;
+    border-top: 8px solid var(--grey);
+  }
+
+  .service-page .service-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .service-page h2 { margin-bottom: 4px; }
+
+  .service-page .pain {
+    font-size: 14.5px;
+    color: #444444;
+    margin-bottom: 18px;
+  }
+
+  .billing-box {
+    background: var(--grey);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+
+  .billing-box .billing-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .billing-box p { font-size: 14.5px; }
+
+  /* ---------- 案例卡 ---------- */
+  .case-card {
+    border-left: 3px solid var(--gold);
+    padding: 12px 0 12px 14px;
+    margin-bottom: 14px;
+  }
+
+  .case-card:last-of-type { margin-bottom: 0; }
+
+  .case-num {
+    display: inline-block;
+    background: var(--text);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    margin-bottom: 8px;
+  }
+
+  .case-card .case-profile {
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 6px;
+  }
+
+  .case-card .case-result {
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  .case-card .case-result .num {
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .case-linked-note {
+    font-size: 12.5px;
+    color: #888888;
+    margin-top: 4px;
+  }
+
+  /* 好壞引薦 */
+  .referral-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .referral-box {
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .referral-good {
+    background: #FBEAEA;
+    border-left: 3px solid var(--red);
+  }
+
+  .referral-bad {
+    background: var(--grey);
+    border-left: 3px solid #999999;
+  }
+
+  .referral-box .r-label {
+    font-weight: 700;
+    font-size: 12.5px;
+    margin-bottom: 4px;
+  }
+
+  .referral-good .r-label { color: var(--red); }
+  .referral-bad .r-label { color: #666666; }
+
+  .attach-note {
+    font-size: 13px;
+    color: #777777;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed #DDDDDD;
+  }
+
+  /* ---------- 主打故事 ---------- */
+  #story {
+    background: var(--text);
+    color: var(--white);
+    padding: 48px 0;
+  }
+
+  #story .eyebrow { color: var(--gold); }
+
+  #story h2 { color: var(--white); }
+
+  .story-flow {
+    margin-top: 20px;
+  }
+
+  .story-step {
+    margin-bottom: 16px;
+  }
+
+  .story-step .step-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    background: var(--gold);
+    padding: 2px 9px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+  }
+
+  .story-step p {
+    font-size: 15px;
+    color: #EDEDED;
+  }
+
+  .story-bignum {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #3A3A3A;
+  }
+
+  .story-bignum .num {
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+
+  .story-bignum .label {
+    font-size: 15px;
+    color: #EDEDED;
+    margin-top: 8px;
+  }
+
+  .story-punch {
+    margin-top: 24px;
+    font-size: 14.5px;
+    color: #CCCCCC;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* ---------- 我要找的人（獨立截圖區） ---------- */
+  #referrals {
+    padding: 48px 0;
+  }
+
+  .ref-group {
+    margin-bottom: 24px;
+  }
+
+  .ref-group-title {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 12px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+
+  .ref-group.ideal .ref-group-title {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .ref-group.dream .ref-group-title {
+    background: var(--gold);
+    color: var(--white);
+  }
+
+  .ref-group ul {
+    list-style: none;
+  }
+
+  .ref-group li {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 0;
+    border-bottom: 1px solid #EFEFEF;
+  }
+
+  .ref-group li:last-child { border-bottom: none; }
+
+  .ref-pitch {
+    background: var(--grey);
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  .ref-pitch .r-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .ref-pitch p {
+    font-size: 14.5px;
+    font-style: italic;
+  }
+
+  /* ---------- 人脈圈 ---------- */
+  .sphere-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .sphere-item {
+    background: var(--white);
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+
+  .sphere-item.want {
+    border-color: var(--red);
+    background: #FBEAEA;
+  }
+
+  .want-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--red);
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+  }
+
+  /* ---------- 聯絡 ---------- */
+  #contact {
+    text-align: center;
+  }
+
+  .placeholder-box {
+    border: 2px dashed #C9C9C9;
+    border-radius: 6px;
+    padding: 24px 16px;
+    margin-top: 16px;
+    color: #999999;
+    font-size: 14px;
+  }
+
+  .placeholder-box .ph-title {
+    font-weight: 700;
+    color: #777777;
+    margin-bottom: 4px;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  /* ---------- 121 提問清單 ---------- */
+  #questions ol {
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+
+  #questions li {
+    font-size: 14.5px;
+    padding: 8px 0;
+    border-bottom: 1px solid #EFEFEF;
+  }
+
+  #questions li:last-child { border-bottom: none; }
+
+  footer {
+    text-align: center;
+    padding: 28px 0 40px;
+    font-size: 12px;
+    color: #AAAAAA;
+  }
+
+  @media (min-width: 480px) {
+    h1 { font-size: 32px; }
+    #hero .name { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 區塊 0：開場（規格 §四 #0） -->
+<section id="hero">
+  <div class="wrap">
+    <div class="avatar">瓊</div>
+    <div class="name">張瓊安<span class="nick">瓊安</span></div>
+    <div class="role">
+      <strong>窩的家集團</strong> 執行長特助<br>
+      <strong>BNI 華都更分會</strong> NO.007 資訊組組長
+    </div>
+    <div class="badge-gold">引薦人：邱愛莉</div>
+    <div class="tagline">讓房子從<span class="red">負債</span>變成<span class="red">會生錢的資產</span></div>
+  </div>
+</section>
+
+<!-- 區塊 1：我怎麼走到這裡（規格 §四 #1） -->
+<section class="grey">
+  <div class="wrap">
+    <div class="eyebrow">MEMBER JOURNEY</div>
+    <h2>我怎麼走到這裡</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-title">美學生活</div>
+        <div class="tl-body">從系統建置起步，打下數位化與流程設計的底子。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-title">全地產</div>
+        <div class="tl-body">信義區百億建案專案經理，2024 年結案銷售 130 億；一手從零建置皇長建設品牌。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-title">窩的家</div>
+        <div class="tl-body">2025 年 10 月起擔任執行長特助，主導全公司資訊化與流程自動化。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 2：會員資料（規格 §四 #2） -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">MEMBER PROFILE</div>
+    <h2>會員資料</h2>
+    <table class="infotable">
+      <tr><th>公司 / 職業</th><td>窩的家集團 · 仲介經紀人（三重蘆洲新莊）</td></tr>
+      <tr><th>地點</th><td>台北市</td></tr>
+      <tr><th>行業年資</th><td>9 年</td></tr>
+      <tr><th>前一份工作</th><td>全地產｜信義區百億建案專案經理</td></tr>
+      <tr><th>個人</th><td>家有兩隻老貓</td></tr>
+      <tr><th>我強烈的願望</th><td>讓房子從負債變成會生錢的資產，讓更多房東不用自己碰租客也能安心收租。</td></tr>
+      <tr><th>我的成功關鍵</th><td>把複雜的流程做成系統，讓專業可以規模化、不靠人力硬撐。</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 區塊 3：GAINS（規格 §四 #3） -->
+<section class="grey">
+  <div class="wrap">
+    <div class="eyebrow">GAINS</div>
+    <h2>目標 · 成就 · 興趣 · 人脈 · 技巧</h2>
+
+    <div class="gains-block">
+      <span class="gains-label">GOALS 目標</span>
+      <ul>
+        <li>透過華都更分會建立資產活化產業鏈人脈，第一年引薦成交累計 500 萬</li>
+      </ul>
+    </div>
+
+    <div class="gains-block">
+      <span class="gains-label">ACCOMPLISHMENTS 成就</span>
+      <ul>
+        <li>信義區百億建案專案經理，2024 年結案銷售 130 億</li>
+        <li>從零建置皇長建設品牌，主導窩的家集團資訊化</li>
+      </ul>
+    </div>
+
+    <div class="gains-block">
+      <span class="gains-label">INTERESTS 興趣</span>
+      <ul>
+        <li>不動產投資、系統與流程設計、AI 應用</li>
+      </ul>
+    </div>
+
+    <div class="gains-block">
+      <span class="gains-label">NETWORKS 人脈</span>
+      <ul>
+        <li>房地產仲介 / 代銷業界人脈</li>
+        <li>裝修與工程團隊</li>
+        <li>BNI 華都更分會夥伴</li>
+      </ul>
+    </div>
+
+    <div class="gains-block">
+      <span class="gains-label">SKILLS 技巧</span>
+      <ul>
+        <li>不動產投資評估</li>
+        <li>裝修 / 出租 / 代管流程整合</li>
+        <li>資訊系統與流程自動化</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 4：四條服務線總覽（規格 §四 #4） -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">SERVICES</div>
+    <h2>四條服務線</h2>
+
+    <div class="service-card">
+      <div class="service-num">01 · 包租代管與空屋活化</div>
+      <p class="one-liner">房子空著、找不到人管，想固定收租不碰租客。</p>
+      <p class="billing">計費：<b>代租</b>按成交收服務費／<b>代管</b>按月租金比例／<b>包租</b>房東零費用、保證租金。</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02 · 資產活化（陪跑投資）</div>
+      <p class="one-liner">把閒錢或房子裡的錢，變成會收租的資產。</p>
+      <p class="billing">計費：<b>陪跑顧問費</b>，分獨資與合資兩種合作型態，金額面談。</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03 · 裝修設計</div>
+      <p class="one-liner">合法隔套、整層裝修、軟裝全配，把老房子的租金拉高。</p>
+      <p class="billing">計費：依標的丈量估價後報價，分輕資產配置與整層裝修兩檔。</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04 · 買賣</div>
+      <p class="one-liner">買進端與出場端，會賺的老屋怎麼買、持有期滿怎麼出。</p>
+      <p class="billing">計費：仲介服務費依成交價比例。</p>
+    </div>
+
+    <p class="note-bottom">實際費用依標的評估後報價</p>
+  </div>
+</section>
+
+<!-- 區塊 5：服務 01 包租代管與空屋活化（規格 §四 #5、§五 案例①②） -->
+<section class="service-page">
+  <div class="wrap">
+    <div class="service-tag">SERVICE 01</div>
+    <h2>包租代管與空屋活化</h2>
+    <p class="pain">房子空著、找不到人管，想固定收租、不想自己碰租客的房東。</p>
+
+    <div class="billing-box">
+      <div class="billing-title">計費方式</div>
+      <p>代租按成交收服務費／代管按月租金比例／包租房東零費用、保證租金。</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-num">1</span>
+      <div class="case-profile">士林區公寓屋主，約 25 坪、久未招租、不想投入大裝修</div>
+      <div class="case-result">改分租套房出租，<span class="num">已簽約完工</span></div>
+    </div>
+
+    <div class="case-card">
+      <span class="case-num">2</span>
+      <div class="case-profile">三重文化南路透天屋主</div>
+      <div class="case-result">隔套完成後 <span class="num">3 週去化 7 間</span>，滿租<span class="num">月收 23 萬</span>，交由代管</div>
+      <div class="case-linked-note">（與後面「主打故事」是同一棟透天的前後兩段）</div>
+    </div>
+
+    <div class="referral-pair">
+      <div class="referral-box referral-good">
+        <div class="r-label">好引薦</div>
+        <div>想出租、卻找不到人幫忙管的房東</div>
+      </div>
+      <div class="referral-box referral-bad">
+        <div class="r-label">壞引薦</div>
+        <div>期望零風險高報酬、不願付合理服務費的客戶</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 6：服務 02 資產活化（規格 §四 #6、§五 案例③） -->
+<section class="service-page">
+  <div class="wrap">
+    <div class="service-tag">SERVICE 02</div>
+    <h2>資產活化（陪跑投資）</h2>
+    <p class="pain">有一筆閒置資金想收租但不想自己操作的人，或名下有房想周轉又捨不得賣的人。</p>
+
+    <div class="billing-box">
+      <div class="billing-title">計費方式</div>
+      <p>陪跑顧問費，分獨資與合資兩種合作型態，金額面談。</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-num">3</span>
+      <div class="case-profile">三重屋主，拿父親舊房抵押當自備款</div>
+      <div class="case-result"><span class="num">1,925 萬</span>進場、<span class="num">700 萬</span>裝修、隔成 <span class="num">9 間</span>套房，規劃以<span class="num">4,000 多萬</span>出場，自備款兩年接近翻倍</div>
+    </div>
+
+    <div class="referral-pair">
+      <div class="referral-box referral-good">
+        <div class="r-label">好引薦</div>
+        <div>名下有房、想周轉一筆資金，卻捨不得賣房的人</div>
+      </div>
+      <div class="referral-box referral-bad">
+        <div class="r-label">壞引薦</div>
+        <div>期望零風險高報酬的糾紛型客戶</div>
+      </div>
+    </div>
+
+    <p class="attach-note">房子不用賣，也能把卡在裡面的錢拿出來、滾下一間。</p>
+  </div>
+</section>
+
+<!-- 區塊 7：服務 03 裝修設計（規格 §四 #7、§五 案例④） -->
+<section class="service-page">
+  <div class="wrap">
+    <div class="service-tag">SERVICE 03</div>
+    <h2>裝修設計</h2>
+    <p class="pain">老公寓想拉高租金的屋主、餘屋去化不掉的建商。</p>
+
+    <div class="billing-box">
+      <div class="billing-title">計費方式</div>
+      <p>依標的丈量估價後報價，分輕資產配置與整層裝修兩檔。</p>
+    </div>
+
+    <div class="case-card">
+      <span class="case-num">4</span>
+      <div class="case-profile">三重透天，全棟合法隔套 8 間</div>
+      <div class="case-result">每間<span class="num">25,000／月</span></div>
+      <div class="case-linked-note">合併算：與服務 01 案例② 是同一波客戶操作出的兩棟透天，合計 17 間套房。</div>
+    </div>
+
+    <div class="referral-pair">
+      <div class="referral-box referral-good">
+        <div class="r-label">好引薦</div>
+        <div>老公寓想拉高租金的屋主</div>
+      </div>
+      <div class="referral-box referral-bad">
+        <div class="r-label">壞引薦</div>
+        <div>只想壓低裝修預算、不願配合標準化規劃的屋主</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 8：服務 04 買賣（規格 §四 #8） -->
+<section class="service-page">
+  <div class="wrap">
+    <div class="service-tag">SERVICE 04</div>
+    <h2>買賣</h2>
+    <p class="pain">想買會賺的老屋的人、持有期滿要出場的屋主。</p>
+
+    <div class="billing-box">
+      <div class="billing-title">計費方式</div>
+      <p>仲介服務費依成交價比例。</p>
+    </div>
+
+    <p class="attach-note">地主自建整合：可談。</p>
+
+    <div class="referral-pair">
+      <div class="referral-box referral-good">
+        <div class="r-label">好引薦</div>
+        <div>想買會賺的老屋的人、持有期滿要出場的屋主</div>
+      </div>
+      <div class="referral-box referral-bad">
+        <div class="r-label">壞引薦</div>
+        <div>只看價格不看物件狀況、不配合估價流程的買方</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 9：主打故事（規格 §四 #9、§六） -->
+<section id="story">
+  <div class="wrap">
+    <div class="eyebrow">CASE STORY</div>
+    <h2>一棟透天的兩年</h2>
+
+    <div class="story-flow">
+      <div class="story-step">
+        <span class="step-tag">起</span>
+        <p>屋主手上只有一間爸爸的舊房，沒有現金。</p>
+      </div>
+      <div class="story-step">
+        <span class="step-tag">承</span>
+        <p>舊房抵押當自備款，1,925 萬買下三重一棟老透天。</p>
+      </div>
+      <div class="story-step">
+        <span class="step-tag">轉</span>
+        <p>8 個月把樓梯移到中間、隔成 9 間標準化套房，投入 700 萬。</p>
+      </div>
+      <div class="story-step">
+        <span class="step-tag">合</span>
+        <p>出租 3 週去化 7 間，滿租月收 23 萬，交給窩的家代管；持有滿 2 年後規劃以 4,000 多萬出場。</p>
+      </div>
+    </div>
+
+    <div class="story-bignum">
+      <div class="num">×2</div>
+      <div class="label">自備款兩年接近翻倍</div>
+    </div>
+
+    <p class="story-punch">從評估、裝修、出租、代管到出場，全程都是同一家公司在跑——這就是為什麼找瓊安，而不是分別找三家。</p>
+  </div>
+</section>
+
+<!-- 區塊 10：我要找的人（規格 §四 #10，獨立可截圖） -->
+<section id="referrals">
+  <div class="wrap">
+    <div class="eyebrow">REFERRALS</div>
+    <h2>我要找的人</h2>
+
+    <div class="ref-group ideal">
+      <div class="ref-group-title">理想引薦</div>
+      <ul>
+        <li>想出租、卻找不到人幫忙管的房東</li>
+        <li>名下有房、想周轉一筆資金，卻捨不得賣房的人</li>
+        <li>有餘屋去化不掉的建設公司</li>
+      </ul>
+    </div>
+
+    <div class="ref-group dream">
+      <div class="ref-group-title">夢幻引薦</div>
+      <ul>
+        <li>手上多間老屋、想整批活化的資產型房東</li>
+        <li>正在找長期資產活化夥伴的建設公司</li>
+      </ul>
+    </div>
+
+    <div class="ref-pitch">
+      <div class="r-label">一句引薦說法</div>
+      <p>「我認識一位顧問，專門幫房東把老屋從裝修、出租一路做到活化資產，先聊三十分鐘看看方向對不對。」</p>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 11：我的人脈圈（規格 §四 #11） -->
+<section class="grey">
+  <div class="wrap">
+    <div class="eyebrow">CONTACT SPHERE</div>
+    <h2>我的人脈圈</h2>
+    <div class="sphere-grid">
+      <div class="sphere-item want"><span class="want-tag">最想補齊</span><br>建設公司</div>
+      <div class="sphere-item want"><span class="want-tag">最想補齊</span><br>代書地政士</div>
+      <div class="sphere-item want"><span class="want-tag">最想補齊</span><br>建經公司</div>
+      <div class="sphere-item">建築師</div>
+      <div class="sphere-item">銀行房貸窗口</div>
+      <div class="sphere-item">室內設計師</div>
+      <div class="sphere-item">裝修工程</div>
+      <div class="sphere-item">代銷</div>
+      <div class="sphere-item">營造廠</div>
+      <div class="sphere-item">保險</div>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 12：下一步很簡單（規格 §四 #12） -->
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">LET'S TALK</div>
+    <h2>下一步很簡單</h2>
+    <p class="muted">約一場 30 分鐘的線上初談，一起看看手上的房子可以怎麼動起來。</p>
+
+    <div class="contact-list">
+      <div class="placeholder-box">
+        <div class="ph-title">LINE QR</div>
+        待補
+      </div>
+      <div class="placeholder-box">
+        <div class="ph-title">聯絡電話</div>
+        待補
+      </div>
+      <div class="placeholder-box">
+        <div class="ph-title">預約連結</div>
+        待補
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 區塊 13：121 提問清單（規格 §四 #13，對應藍本 P14） -->
+<section class="grey" id="questions">
+  <div class="wrap">
+    <div class="eyebrow">ONE-ON-ONE</div>
+    <h2>121 提問清單</h2>
+    <ol>
+      <li>你是怎麼開始你的事業的？</li>
+      <li>你最喜歡你工作的哪一部分？</li>
+      <li>你和你的公司跟同業相比，有什麼不同？</li>
+      <li>你會給剛進入這個行業的人什麼建議？</li>
+      <li>你所在的產業未來會有哪些趨勢？</li>
+      <li>你認為最有效的業務推廣方式是什麼？</li>
+      <li>如果可以改變你的事業中的任何一件事，那會是什麼？</li>
+      <li>你接下來最大的活動是什麼？</li>
+      <li>你目前最大的挑戰是什麼？</li>
+      <li>你正在尋找哪一類客戶？我該怎麼辨識適合介紹給你的人？</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  BNI 華都更分會 · 一對一自介頁
+</footer>
+
+</body>
+</html>
