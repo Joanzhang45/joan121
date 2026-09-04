@@ -8,10 +8,14 @@
 <style>
   :root {
     --red: #C8102E;
+    --red-deep: #9E0C24;
     --gold: #C8A04F;
     --white: #FFFFFF;
     --grey: #F5F5F5;
+    --grey-line: #E5E5E5;
     --text: #1A1A1A;
+    --ink: #111111;
+    --ink-soft: #232323;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,43 +34,78 @@
   }
 
   .wrap {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 26px;
   }
 
-  section {
-    padding: 40px 0;
+  /* ---------- 頁殼：每個區塊都是一「頁」 ---------- */
+  .page {
+    position: relative;
+    padding: 64px 0 56px;
+    min-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  section.grey {
-    background: var(--grey);
+  .page.tight {
+    min-height: 0;
+    padding: 52px 0;
   }
 
-  section.grey .wrap {
-    padding-top: 40px;
-    padding-bottom: 40px;
+  .page.white { background: var(--white); color: var(--text); }
+  .page.grey  { background: var(--grey);  color: var(--text); }
+  .page.dark  { background: var(--ink);   color: var(--white); }
+
+  /* 頁首：章節標籤 + 編號，常駐同一個位置（Wispr 規範一：位置感常駐） */
+  .page-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
   }
 
-  .eyebrow {
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    color: var(--red);
+  .page-tag {
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 12px;
     font-weight: 700;
-    margin-bottom: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
   }
+
+  .page.dark .page-tag { color: var(--gold); }
+
+  .page-tag .num {
+    opacity: 0.55;
+    font-weight: 400;
+  }
+
+  .page-sub {
+    font-size: 12.5px;
+    color: #888888;
+    text-align: right;
+    line-height: 1.6;
+    max-width: 42%;
+  }
+
+  .page.dark .page-sub { color: #9A9A9A; }
 
   h1 {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.4;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
   }
 
   h2 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    line-height: 1.5;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
   }
 
   h3 {
@@ -77,81 +116,108 @@
 
   p { font-size: 15px; }
 
-  .muted { color: #555555; font-size: 14px; }
+  .muted { color: #666666; font-size: 14px; }
+  .page.dark .muted { color: #B5B5B5; }
 
-  /* ---------- 區塊 0：開場 ---------- */
+  hr.rule {
+    border: none;
+    height: 1px;
+    background: var(--grey-line);
+    margin: 20px 0;
+  }
+
+  /* ---------- 區塊 0：開場（深底封面） ---------- */
   #hero {
-    padding: 56px 0 40px;
-    text-align: center;
+    background: var(--ink);
+    color: var(--white);
+    min-height: 100vh;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #hero .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   .avatar {
-    width: 96px;
-    height: 96px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     background: var(--red);
     color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 34px;
+    font-size: 20px;
     font-weight: 700;
-    margin: 0 auto 20px;
+    flex-shrink: 0;
+  }
+
+  #hero .hero-main {
+    margin-top: 48px;
   }
 
   #hero .name {
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
   #hero .name .nick {
-    font-size: 16px;
+    display: block;
+    font-size: 17px;
     font-weight: 400;
-    color: #555555;
-    margin-left: 6px;
-  }
-
-  #hero .role {
-    font-size: 15px;
-    color: #555555;
+    color: #9A9A9A;
     margin-top: 10px;
+    letter-spacing: 0.02em;
   }
 
-  #hero .role strong {
-    color: var(--text);
-    font-weight: 600;
+  #hero .role-block {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #2C2C2C;
+    font-size: 15px;
+    color: #D5D5D5;
+  }
+
+  #hero .role-block strong {
+    color: var(--white);
+    font-weight: 700;
   }
 
   .badge-gold {
     display: inline-block;
-    margin-top: 6px;
-    font-size: 13px;
+    margin-top: 14px;
+    font-size: 12.5px;
     color: var(--gold);
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
   }
 
   #hero .tagline {
-    margin-top: 22px;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1.6;
-    border-top: 1px solid #E5E5E5;
-    padding-top: 22px;
+    margin-top: 40px;
+    font-size: 27px;
+    font-weight: 900;
+    line-height: 1.55;
   }
 
   #hero .tagline .red { color: var(--red); }
 
   /* ---------- 時間軸 ---------- */
   .timeline {
-    margin-top: 8px;
+    margin-top: 4px;
   }
 
   .tl-item {
     position: relative;
-    padding-left: 24px;
-    padding-bottom: 24px;
-    border-left: 2px solid var(--grey);
+    padding-left: 28px;
+    padding-bottom: 30px;
+    border-left: 2px solid var(--grey-line);
   }
 
   .tl-item:last-child {
@@ -162,7 +228,7 @@
     content: "";
     position: absolute;
     left: -7px;
-    top: 2px;
+    top: 3px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -170,24 +236,25 @@
   }
 
   .tl-item .tl-title {
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: 900;
+    font-size: 19px;
   }
 
   .tl-item .tl-body {
-    font-size: 14px;
+    font-size: 14.5px;
     color: #444444;
-    margin-top: 4px;
+    margin-top: 6px;
   }
 
   /* ---------- 資料表 ---------- */
   .infotable {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 4px;
   }
 
   .infotable tr {
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid var(--grey-line);
   }
 
   .infotable tr:last-child {
@@ -196,38 +263,47 @@
 
   .infotable th, .infotable td {
     text-align: left;
-    padding: 12px 0;
-    font-size: 14px;
+    padding: 16px 0;
     vertical-align: top;
   }
 
   .infotable th {
-    width: 34%;
-    color: #777777;
+    width: 30%;
+    color: #999999;
     font-weight: 500;
+    font-size: 13px;
+    padding-right: 12px;
   }
 
   .infotable td {
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 15.5px;
   }
 
   /* ---------- GAINS ---------- */
-  .gains-block {
-    margin-bottom: 22px;
+  .gains-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 4px;
   }
 
-  .gains-block:last-child { margin-bottom: 0; }
+  .gains-block {
+    background: var(--white);
+    border: 1px solid var(--grey-line);
+    border-radius: 2px;
+    padding: 18px 20px;
+  }
 
   .gains-label {
     display: inline-block;
-    font-size: 12px;
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 11px;
     font-weight: 700;
-    color: var(--white);
-    background: var(--red);
-    padding: 3px 10px;
-    border-radius: 3px;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
   }
 
   .gains-block ul {
@@ -236,8 +312,9 @@
   }
 
   .gains-block li {
-    font-size: 14.5px;
-    padding: 4px 0;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 0;
     padding-left: 14px;
     position: relative;
   }
@@ -253,136 +330,172 @@
     background: var(--gold);
   }
 
-  /* ---------- 服務總覽 ---------- */
-  .service-card {
-    background: var(--white);
-    border: 1px solid #E5E5E5;
-    border-radius: 4px;
-    padding: 18px;
-    margin-bottom: 14px;
+  /* ---------- 服務總覽（深底編號卡，仿藍本 P05） ---------- */
+  #services-overview {
+    background: var(--ink);
+    color: var(--white);
   }
 
-  .service-card:last-of-type { margin-bottom: 0; }
+  .svc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
 
-  .service-num {
-    display: inline-block;
-    font-size: 12px;
+  .svc-card {
+    background: var(--ink-soft);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 22px 20px;
+  }
+
+  .svc-card:nth-child(4) { border-top-color: var(--red); }
+
+  .svc-card .svc-num {
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 24px;
     font-weight: 700;
-    color: var(--red);
-    letter-spacing: 0.06em;
-    margin-bottom: 6px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 10px;
   }
 
-  .service-card h3 { margin-bottom: 6px; }
+  .svc-card:nth-child(4) .svc-num { color: var(--red); }
 
-  .service-card .one-liner {
-    font-size: 14.5px;
-    color: #333333;
+  .svc-card h3 {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--white);
     margin-bottom: 8px;
   }
 
-  .service-card .billing {
-    font-size: 13.5px;
-    color: #666666;
-    background: var(--grey);
-    padding: 8px 10px;
-    border-radius: 3px;
+  .svc-card .one-liner {
+    font-size: 14px;
+    color: #C7C7C7;
+    margin-bottom: 14px;
+    line-height: 1.6;
   }
 
-  .service-card .billing b {
-    color: var(--text);
+  .svc-card .billing {
+    font-size: 13px;
+    color: #9A9A9A;
+    border-top: 1px solid #333333;
+    padding-top: 12px;
+  }
+
+  .svc-card .billing b {
+    color: var(--white);
     font-weight: 700;
   }
 
   .note-bottom {
-    margin-top: 18px;
+    margin-top: 20px;
     text-align: center;
     font-size: 13px;
-    color: #777777;
+    color: #7A7A7A;
   }
 
   /* ---------- 服務詳頁 ---------- */
-  .service-page {
-    padding: 44px 0;
-    border-top: 8px solid var(--grey);
+  .service-page .service-page-num {
+    font-size: 84px;
+    font-weight: 900;
+    color: var(--grey-line);
+    line-height: 0.75;
+    position: absolute;
+    right: 26px;
+    top: 54px;
+    letter-spacing: -0.04em;
+    user-select: none;
+    z-index: 0;
   }
 
-  .service-page .service-tag {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--red);
-    letter-spacing: 0.1em;
-    margin-bottom: 6px;
-  }
+  .service-page .wrap { position: relative; z-index: 1; }
 
-  .service-page h2 { margin-bottom: 4px; }
+  .service-page h2 { margin-bottom: 6px; }
 
   .service-page .pain {
-    font-size: 14.5px;
+    font-size: 15px;
     color: #444444;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
+    max-width: 90%;
   }
 
   .billing-box {
-    background: var(--grey);
-    border-radius: 4px;
-    padding: 14px 16px;
-    margin-bottom: 20px;
+    background: var(--white);
+    border: 1px solid var(--grey-line);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
   }
 
+  .grey .billing-box { background: var(--white); }
+
   .billing-box .billing-title {
-    font-size: 12px;
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 11px;
     font-weight: 700;
     color: var(--gold);
-    letter-spacing: 0.06em;
-    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
   }
 
   .billing-box p { font-size: 14.5px; }
 
-  /* ---------- 案例卡 ---------- */
-  .case-card {
-    border-left: 3px solid var(--gold);
-    padding: 12px 0 12px 14px;
-    margin-bottom: 14px;
+  /* ---------- 案例卡（並列編號卡，仿藍本 01/02/03） ---------- */
+  .case-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 18px;
   }
 
-  .case-card:last-of-type { margin-bottom: 0; }
+  .case-card {
+    background: var(--white);
+    border: 1px solid var(--grey-line);
+    border-radius: 2px;
+    padding: 20px;
+  }
 
   .case-num {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: var(--text);
     color: var(--white);
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
     font-size: 12px;
     font-weight: 700;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   .case-card .case-profile {
     font-size: 14px;
     color: #444444;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
+    line-height: 1.6;
   }
 
   .case-card .case-result {
-    font-size: 14.5px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
   }
 
   .case-card .case-result .num {
     color: var(--red);
-    font-weight: 700;
+    font-weight: 900;
   }
 
   .case-linked-note {
     font-size: 12.5px;
-    color: #888888;
-    margin-top: 4px;
+    color: #999999;
+    margin-top: 8px;
   }
 
   /* 好壞引薦 */
@@ -390,12 +503,12 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 24px;
   }
 
   .referral-box {
-    border-radius: 4px;
-    padding: 12px 14px;
+    border-radius: 2px;
+    padding: 14px 16px;
     font-size: 14px;
   }
 
@@ -410,112 +523,140 @@
   }
 
   .referral-box .r-label {
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
     font-weight: 700;
-    font-size: 12.5px;
-    margin-bottom: 4px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
   }
 
   .referral-good .r-label { color: var(--red); }
   .referral-bad .r-label { color: #666666; }
 
   .attach-note {
-    font-size: 13px;
+    font-size: 13.5px;
     color: #777777;
-    margin-top: 14px;
-    padding-top: 14px;
+    margin-top: 18px;
+    padding-top: 16px;
     border-top: 1px dashed #DDDDDD;
   }
 
-  /* ---------- 主打故事 ---------- */
+  /* ---------- 主打故事（深底大數字，仿藍本 720×） ---------- */
   #story {
-    background: var(--text);
+    background: var(--ink);
     color: var(--white);
-    padding: 48px 0;
   }
 
-  #story .eyebrow { color: var(--gold); }
-
-  #story h2 { color: var(--white); }
+  #story .page-sub { color: #9A9A9A; }
 
   .story-flow {
-    margin-top: 20px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .story-step {
-    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
   }
 
   .story-step .step-tag {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text);
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--ink);
     background: var(--gold);
-    padding: 2px 9px;
-    border-radius: 3px;
-    margin-bottom: 6px;
+    border-radius: 50%;
   }
 
   .story-step p {
-    font-size: 15px;
-    color: #EDEDED;
+    font-size: 15.5px;
+    color: #E3E3E3;
+    padding-top: 6px;
+    line-height: 1.7;
   }
 
   .story-bignum {
-    text-align: center;
-    margin-top: 32px;
-    padding-top: 28px;
-    border-top: 1px solid #3A3A3A;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #2C2C2C;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
   }
 
   .story-bignum .num {
-    font-size: 52px;
-    font-weight: 800;
-    color: var(--gold);
-    line-height: 1.1;
+    font-size: 88px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -0.03em;
   }
 
   .story-bignum .label {
     font-size: 15px;
-    color: #EDEDED;
-    margin-top: 8px;
+    color: #C7C7C7;
+    max-width: 200px;
+    line-height: 1.6;
   }
 
   .story-punch {
-    margin-top: 24px;
+    margin-top: 28px;
     font-size: 14.5px;
-    color: #CCCCCC;
-    text-align: center;
-    line-height: 1.8;
+    color: #B5B5B5;
+    line-height: 1.85;
   }
 
-  /* ---------- 我要找的人（獨立截圖區） ---------- */
-  #referrals {
-    padding: 48px 0;
+  /* ---------- 我要找的人 ---------- */
+  .ref-cols {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 4px;
   }
 
   .ref-group {
-    margin-bottom: 24px;
+    border-radius: 2px;
+    padding: 22px 20px;
+  }
+
+  .ref-group.ideal {
+    background: var(--white);
+    border: 1px solid var(--grey-line);
+    border-top: 3px solid var(--red);
+  }
+
+  .ref-group.dream {
+    background: var(--ink);
+    border-top: 3px solid var(--gold);
+    color: var(--white);
   }
 
   .ref-group-title {
-    display: inline-block;
-    font-size: 13px;
+    display: block;
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 4px 12px;
-    border-radius: 3px;
-    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
   }
 
-  .ref-group.ideal .ref-group-title {
-    background: var(--red);
-    color: var(--white);
-  }
+  .ref-group.ideal .ref-group-title { color: var(--red); }
+  .ref-group.dream .ref-group-title { color: var(--gold); }
 
-  .ref-group.dream .ref-group-title {
-    background: var(--gold);
-    color: var(--white);
+  .ref-group .ref-group-name {
+    font-size: 19px;
+    font-weight: 900;
+    margin-bottom: 14px;
   }
 
   .ref-group ul {
@@ -525,29 +666,37 @@
   .ref-group li {
     font-size: 15px;
     font-weight: 600;
-    padding: 8px 0;
-    border-bottom: 1px solid #EFEFEF;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .ref-group.dream li {
+    border-bottom: 1px solid rgba(255,255,255,0.14);
   }
 
   .ref-group li:last-child { border-bottom: none; }
 
   .ref-pitch {
     background: var(--grey);
-    border-radius: 4px;
-    padding: 16px;
-    margin-top: 8px;
+    border-radius: 2px;
+    padding: 18px 20px;
+    margin-top: 4px;
   }
 
   .ref-pitch .r-label {
-    font-size: 12px;
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 11px;
     font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .ref-pitch p {
-    font-size: 14.5px;
+    font-size: 15px;
     font-style: italic;
+    line-height: 1.75;
   }
 
   /* ---------- 人脈圈 ---------- */
@@ -555,16 +704,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 8px;
+    margin-top: 4px;
   }
 
   .sphere-item {
     background: var(--white);
-    border: 1px solid #E5E5E5;
-    border-radius: 4px;
-    padding: 10px 12px;
-    font-size: 13.5px;
-    font-weight: 600;
+    border: 1px solid var(--grey-line);
+    border-radius: 2px;
+    padding: 14px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    min-height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .sphere-item.want {
@@ -574,66 +727,107 @@
 
   .want-tag {
     display: inline-block;
-    font-size: 10.5px;
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 10px;
     font-weight: 700;
     color: var(--white);
     background: var(--red);
-    padding: 1px 6px;
-    border-radius: 3px;
-    margin-bottom: 4px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    width: fit-content;
+    letter-spacing: 0.04em;
   }
 
-  /* ---------- 聯絡 ---------- */
+  /* ---------- 聯絡（深底收尾） ---------- */
   #contact {
-    text-align: center;
+    background: var(--ink);
+    color: var(--white);
+    text-align: left;
   }
+
+  #contact .page-sub { color: #9A9A9A; }
 
   .placeholder-box {
-    border: 2px dashed #C9C9C9;
-    border-radius: 6px;
-    padding: 24px 16px;
-    margin-top: 16px;
-    color: #999999;
-    font-size: 14px;
+    border: 1px dashed #444444;
+    border-radius: 2px;
+    padding: 22px 18px;
+    color: #7A7A7A;
+    font-size: 13.5px;
   }
 
   .placeholder-box .ph-title {
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
     font-weight: 700;
-    color: #777777;
-    margin-bottom: 4px;
+    color: #AAAAAA;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
   }
 
   .contact-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 28px;
   }
 
   /* ---------- 121 提問清單 ---------- */
   #questions ol {
-    padding-left: 20px;
-    margin-top: 10px;
+    list-style: none;
+    counter-reset: qnum;
+    padding: 0;
+    margin-top: 4px;
   }
 
   #questions li {
-    font-size: 14.5px;
-    padding: 8px 0;
-    border-bottom: 1px solid #EFEFEF;
+    counter-increment: qnum;
+    font-size: 15px;
+    padding: 14px 0 14px 40px;
+    border-bottom: 1px solid var(--grey-line);
+    position: relative;
+    line-height: 1.6;
+  }
+
+  #questions li::before {
+    content: counter(qnum, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
   }
 
   #questions li:last-child { border-bottom: none; }
 
   footer {
     text-align: center;
-    padding: 28px 0 40px;
+    padding: 32px 0 44px;
     font-size: 12px;
     color: #AAAAAA;
+    background: var(--grey);
   }
 
   @media (min-width: 480px) {
-    h1 { font-size: 32px; }
-    #hero .name { font-size: 34px; }
+    #hero .name { font-size: 64px; }
+    h2 { font-size: 30px; }
+    .story-bignum .num { font-size: 104px; }
+    .sphere-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (min-width: 700px) {
+    .svc-grid { grid-template-columns: repeat(2, 1fr); }
+    .case-row { flex-direction: row; }
+    .case-row .case-card { flex: 1; }
+    .ref-cols { flex-direction: row; }
+    .ref-cols .ref-group { flex: 1; }
+    .referral-pair { flex-direction: row; }
+    .referral-pair .referral-box { flex: 1; }
+    .contact-list { flex-direction: row; }
+    .contact-list .placeholder-box { flex: 1; }
   }
 </style>
 </head>
@@ -642,21 +836,30 @@
 <!-- 區塊 0：開場（規格 §四 #0） -->
 <section id="hero">
   <div class="wrap">
-    <div class="avatar">瓊</div>
-    <div class="name">張瓊安<span class="nick">瓊安</span></div>
-    <div class="role">
-      <strong>窩的家集團</strong> 執行長特助<br>
-      <strong>BNI 華都更分會</strong> NO.007 資訊組組長
+    <div class="top-row">
+      <div class="avatar">瓊</div>
     </div>
-    <div class="badge-gold">引薦人：邱愛莉</div>
-    <div class="tagline">讓房子從<span class="red">負債</span>變成<span class="red">會生錢的資產</span></div>
+
+    <div class="hero-main">
+      <div class="name">張瓊安<span class="nick">瓊安</span></div>
+
+      <div class="role-block">
+        <strong>窩的家集團</strong> 執行長特助<br>
+        <strong>BNI 華都更分會</strong> NO.007 資訊組組長
+      </div>
+      <div class="badge-gold">引薦人：邱愛莉</div>
+
+      <div class="tagline">讓房子從<span class="red">負債</span>變成<span class="red">會生錢的資產</span></div>
+    </div>
   </div>
 </section>
 
 <!-- 區塊 1：我怎麼走到這裡（規格 §四 #1） -->
-<section class="grey">
+<section class="page grey tight">
   <div class="wrap">
-    <div class="eyebrow">MEMBER JOURNEY</div>
+    <div class="page-head">
+      <div class="page-tag">MEMBER JOURNEY <span class="num">· 01</span></div>
+    </div>
     <h2>我怎麼走到這裡</h2>
     <div class="timeline">
       <div class="tl-item">
@@ -676,9 +879,11 @@
 </section>
 
 <!-- 區塊 2：會員資料（規格 §四 #2） -->
-<section>
+<section class="page white tight">
   <div class="wrap">
-    <div class="eyebrow">MEMBER PROFILE</div>
+    <div class="page-head">
+      <div class="page-tag">MEMBER PROFILE <span class="num">· 02</span></div>
+    </div>
     <h2>會員資料</h2>
     <table class="infotable">
       <tr><th>公司 / 職業</th><td>窩的家集團 · 仲介經紀人（三重蘆洲新莊）</td></tr>
@@ -693,81 +898,93 @@
 </section>
 
 <!-- 區塊 3：GAINS（規格 §四 #3） -->
-<section class="grey">
+<section class="page grey tight">
   <div class="wrap">
-    <div class="eyebrow">GAINS</div>
+    <div class="page-head">
+      <div class="page-tag">GAINS <span class="num">· 03</span></div>
+    </div>
     <h2>目標 · 成就 · 興趣 · 人脈 · 技巧</h2>
 
-    <div class="gains-block">
-      <span class="gains-label">GOALS 目標</span>
-      <ul>
-        <li>透過華都更分會建立資產活化產業鏈人脈，第一年引薦成交累計 500 萬</li>
-      </ul>
-    </div>
+    <div class="gains-grid">
+      <div class="gains-block">
+        <span class="gains-label">GOALS 目標</span>
+        <ul>
+          <li>透過華都更分會建立資產活化產業鏈人脈，第一年引薦成交累計 500 萬</li>
+        </ul>
+      </div>
 
-    <div class="gains-block">
-      <span class="gains-label">ACCOMPLISHMENTS 成就</span>
-      <ul>
-        <li>信義區百億建案專案經理，2024 年結案銷售 130 億</li>
-        <li>從零建置皇長建設品牌，主導窩的家集團資訊化</li>
-      </ul>
-    </div>
+      <div class="gains-block">
+        <span class="gains-label">ACCOMPLISHMENTS 成就</span>
+        <ul>
+          <li>信義區百億建案專案經理，2024 年結案銷售 130 億</li>
+          <li>從零建置皇長建設品牌，主導窩的家集團資訊化</li>
+        </ul>
+      </div>
 
-    <div class="gains-block">
-      <span class="gains-label">INTERESTS 興趣</span>
-      <ul>
-        <li>不動產投資、系統與流程設計、AI 應用</li>
-      </ul>
-    </div>
+      <div class="gains-block">
+        <span class="gains-label">INTERESTS 興趣</span>
+        <ul>
+          <li>不動產投資、系統與流程設計、AI 應用</li>
+        </ul>
+      </div>
 
-    <div class="gains-block">
-      <span class="gains-label">NETWORKS 人脈</span>
-      <ul>
-        <li>房地產仲介 / 代銷業界人脈</li>
-        <li>裝修與工程團隊</li>
-        <li>BNI 華都更分會夥伴</li>
-      </ul>
-    </div>
+      <div class="gains-block">
+        <span class="gains-label">NETWORKS 人脈</span>
+        <ul>
+          <li>房地產仲介 / 代銷業界人脈</li>
+          <li>裝修與工程團隊</li>
+          <li>BNI 華都更分會夥伴</li>
+        </ul>
+      </div>
 
-    <div class="gains-block">
-      <span class="gains-label">SKILLS 技巧</span>
-      <ul>
-        <li>不動產投資評估</li>
-        <li>裝修 / 出租 / 代管流程整合</li>
-        <li>資訊系統與流程自動化</li>
-      </ul>
+      <div class="gains-block">
+        <span class="gains-label">SKILLS 技巧</span>
+        <ul>
+          <li>不動產投資評估</li>
+          <li>裝修 / 出租 / 代管流程整合</li>
+          <li>資訊系統與流程自動化</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- 區塊 4：四條服務線總覽（規格 §四 #4） -->
-<section>
+<section class="page dark" id="services-overview">
   <div class="wrap">
-    <div class="eyebrow">SERVICES</div>
+    <div class="page-head">
+      <div class="page-tag">SERVICES <span class="num">· 04</span></div>
+    </div>
     <h2>四條服務線</h2>
 
-    <div class="service-card">
-      <div class="service-num">01 · 包租代管與空屋活化</div>
-      <p class="one-liner">房子空著、找不到人管，想固定收租不碰租客。</p>
-      <p class="billing">計費：<b>代租</b>按成交收服務費／<b>代管</b>按月租金比例／<b>包租</b>房東零費用、保證租金。</p>
-    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <h3>包租代管與空屋活化</h3>
+        <p class="one-liner">房子空著、找不到人管，想固定收租不碰租客。</p>
+        <p class="billing">計費：<b>代租</b>按成交收服務費／<b>代管</b>按月租金比例／<b>包租</b>房東零費用、保證租金。</p>
+      </div>
 
-    <div class="service-card">
-      <div class="service-num">02 · 資產活化（陪跑投資）</div>
-      <p class="one-liner">把閒錢或房子裡的錢，變成會收租的資產。</p>
-      <p class="billing">計費：<b>陪跑顧問費</b>，分獨資與合資兩種合作型態，金額面談。</p>
-    </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <h3>資產活化（陪跑投資）</h3>
+        <p class="one-liner">把閒錢或房子裡的錢，變成會收租的資產。</p>
+        <p class="billing">計費：<b>陪跑顧問費</b>，分獨資與合資兩種合作型態，金額面談。</p>
+      </div>
 
-    <div class="service-card">
-      <div class="service-num">03 · 裝修設計</div>
-      <p class="one-liner">合法隔套、整層裝修、軟裝全配，把老房子的租金拉高。</p>
-      <p class="billing">計費：依標的丈量估價後報價，分輕資產配置與整層裝修兩檔。</p>
-    </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <h3>裝修設計</h3>
+        <p class="one-liner">合法隔套、整層裝修、軟裝全配，把老房子的租金拉高。</p>
+        <p class="billing">計費：依標的丈量估價後報價，分輕資產配置與整層裝修兩檔。</p>
+      </div>
 
-    <div class="service-card">
-      <div class="service-num">04 · 買賣</div>
-      <p class="one-liner">買進端與出場端，會賺的老屋怎麼買、持有期滿怎麼出。</p>
-      <p class="billing">計費：仲介服務費依成交價比例。</p>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <h3>買賣</h3>
+        <p class="one-liner">買進端與出場端，會賺的老屋怎麼買、持有期滿怎麼出。</p>
+        <p class="billing">計費：仲介服務費依成交價比例。</p>
+      </div>
     </div>
 
     <p class="note-bottom">實際費用依標的評估後報價</p>
@@ -775,9 +992,12 @@
 </section>
 
 <!-- 區塊 5：服務 01 包租代管與空屋活化（規格 §四 #5、§五 案例①②） -->
-<section class="service-page">
+<section class="page white service-page">
+  <div class="service-page-num">01</div>
   <div class="wrap">
-    <div class="service-tag">SERVICE 01</div>
+    <div class="page-head">
+      <div class="page-tag">SERVICE 01 <span class="num">· 05</span></div>
+    </div>
     <h2>包租代管與空屋活化</h2>
     <p class="pain">房子空著、找不到人管，想固定收租、不想自己碰租客的房東。</p>
 
@@ -786,17 +1006,19 @@
       <p>代租按成交收服務費／代管按月租金比例／包租房東零費用、保證租金。</p>
     </div>
 
-    <div class="case-card">
-      <span class="case-num">1</span>
-      <div class="case-profile">士林區公寓屋主，約 25 坪、久未招租、不想投入大裝修</div>
-      <div class="case-result">改分租套房出租，<span class="num">已簽約完工</span></div>
-    </div>
+    <div class="case-row">
+      <div class="case-card">
+        <span class="case-num">1</span>
+        <div class="case-profile">士林區公寓屋主，約 25 坪、久未招租、不想投入大裝修</div>
+        <div class="case-result">改分租套房出租，<span class="num">已簽約完工</span></div>
+      </div>
 
-    <div class="case-card">
-      <span class="case-num">2</span>
-      <div class="case-profile">三重文化南路透天屋主</div>
-      <div class="case-result">隔套完成後 <span class="num">3 週去化 7 間</span>，滿租<span class="num">月收 23 萬</span>，交由代管</div>
-      <div class="case-linked-note">（與後面「主打故事」是同一棟透天的前後兩段）</div>
+      <div class="case-card">
+        <span class="case-num">2</span>
+        <div class="case-profile">三重文化南路透天屋主</div>
+        <div class="case-result">隔套完成後 <span class="num">3 週去化 7 間</span>，滿租<span class="num">月收 23 萬</span>，交由代管</div>
+        <div class="case-linked-note">（與後面「主打故事」是同一棟透天的前後兩段）</div>
+      </div>
     </div>
 
     <div class="referral-pair">
@@ -813,9 +1035,12 @@
 </section>
 
 <!-- 區塊 6：服務 02 資產活化（規格 §四 #6、§五 案例③） -->
-<section class="service-page">
+<section class="page grey service-page">
+  <div class="service-page-num">02</div>
   <div class="wrap">
-    <div class="service-tag">SERVICE 02</div>
+    <div class="page-head">
+      <div class="page-tag">SERVICE 02 <span class="num">· 06</span></div>
+    </div>
     <h2>資產活化（陪跑投資）</h2>
     <p class="pain">有一筆閒置資金想收租但不想自己操作的人，或名下有房想周轉又捨不得賣的人。</p>
 
@@ -824,10 +1049,12 @@
       <p>陪跑顧問費，分獨資與合資兩種合作型態，金額面談。</p>
     </div>
 
-    <div class="case-card">
-      <span class="case-num">3</span>
-      <div class="case-profile">三重屋主，拿父親舊房抵押當自備款</div>
-      <div class="case-result"><span class="num">1,925 萬</span>進場、<span class="num">700 萬</span>裝修、隔成 <span class="num">9 間</span>套房，規劃以<span class="num">4,000 多萬</span>出場，自備款兩年接近翻倍</div>
+    <div class="case-row">
+      <div class="case-card">
+        <span class="case-num">3</span>
+        <div class="case-profile">三重屋主，拿父親舊房抵押當自備款</div>
+        <div class="case-result"><span class="num">1,925 萬</span>進場、<span class="num">700 萬</span>裝修、隔成 <span class="num">9 間</span>套房，規劃以<span class="num">4,000 多萬</span>出場，自備款兩年接近翻倍</div>
+      </div>
     </div>
 
     <div class="referral-pair">
@@ -846,9 +1073,12 @@
 </section>
 
 <!-- 區塊 7：服務 03 裝修設計（規格 §四 #7、§五 案例④） -->
-<section class="service-page">
+<section class="page white service-page">
+  <div class="service-page-num">03</div>
   <div class="wrap">
-    <div class="service-tag">SERVICE 03</div>
+    <div class="page-head">
+      <div class="page-tag">SERVICE 03 <span class="num">· 07</span></div>
+    </div>
     <h2>裝修設計</h2>
     <p class="pain">老公寓想拉高租金的屋主、餘屋去化不掉的建商。</p>
 
@@ -857,11 +1087,13 @@
       <p>依標的丈量估價後報價，分輕資產配置與整層裝修兩檔。</p>
     </div>
 
-    <div class="case-card">
-      <span class="case-num">4</span>
-      <div class="case-profile">三重透天，全棟合法隔套 8 間</div>
-      <div class="case-result">每間<span class="num">25,000／月</span></div>
-      <div class="case-linked-note">合併算：與服務 01 案例② 是同一波客戶操作出的兩棟透天，合計 17 間套房。</div>
+    <div class="case-row">
+      <div class="case-card">
+        <span class="case-num">4</span>
+        <div class="case-profile">三重透天，全棟合法隔套 8 間</div>
+        <div class="case-result">每間<span class="num">25,000／月</span></div>
+        <div class="case-linked-note">合併算：與服務 01 案例② 是同一波客戶操作出的兩棟透天，合計 17 間套房。</div>
+      </div>
     </div>
 
     <div class="referral-pair">
@@ -878,9 +1110,12 @@
 </section>
 
 <!-- 區塊 8：服務 04 買賣（規格 §四 #8） -->
-<section class="service-page">
+<section class="page grey service-page">
+  <div class="service-page-num">04</div>
   <div class="wrap">
-    <div class="service-tag">SERVICE 04</div>
+    <div class="page-head">
+      <div class="page-tag">SERVICE 04 <span class="num">· 08</span></div>
+    </div>
     <h2>買賣</h2>
     <p class="pain">想買會賺的老屋的人、持有期滿要出場的屋主。</p>
 
@@ -889,7 +1124,7 @@
       <p>仲介服務費依成交價比例。</p>
     </div>
 
-    <p class="attach-note">地主自建整合：可談。</p>
+    <p class="attach-note" style="margin-top:0; margin-bottom:24px; border-top:none; padding-top:0;">地主自建整合：可談。</p>
 
     <div class="referral-pair">
       <div class="referral-box referral-good">
@@ -905,9 +1140,11 @@
 </section>
 
 <!-- 區塊 9：主打故事（規格 §四 #9、§六） -->
-<section id="story">
+<section class="page dark" id="story">
   <div class="wrap">
-    <div class="eyebrow">CASE STORY</div>
+    <div class="page-head">
+      <div class="page-tag">CASE STORY <span class="num">· 09</span></div>
+    </div>
     <h2>一棟透天的兩年</h2>
 
     <div class="story-flow">
@@ -939,26 +1176,30 @@
 </section>
 
 <!-- 區塊 10：我要找的人（規格 §四 #10，獨立可截圖） -->
-<section id="referrals">
+<section class="page white tight" id="referrals">
   <div class="wrap">
-    <div class="eyebrow">REFERRALS</div>
+    <div class="page-head">
+      <div class="page-tag">REFERRALS <span class="num">· 10</span></div>
+    </div>
     <h2>我要找的人</h2>
 
-    <div class="ref-group ideal">
-      <div class="ref-group-title">理想引薦</div>
-      <ul>
-        <li>想出租、卻找不到人幫忙管的房東</li>
-        <li>名下有房、想周轉一筆資金，卻捨不得賣房的人</li>
-        <li>有餘屋去化不掉的建設公司</li>
-      </ul>
-    </div>
+    <div class="ref-cols">
+      <div class="ref-group ideal">
+        <div class="ref-group-name">理想引薦</div>
+        <ul>
+          <li>想出租、卻找不到人幫忙管的房東</li>
+          <li>名下有房、想周轉一筆資金，卻捨不得賣房的人</li>
+          <li>有餘屋去化不掉的建設公司</li>
+        </ul>
+      </div>
 
-    <div class="ref-group dream">
-      <div class="ref-group-title">夢幻引薦</div>
-      <ul>
-        <li>手上多間老屋、想整批活化的資產型房東</li>
-        <li>正在找長期資產活化夥伴的建設公司</li>
-      </ul>
+      <div class="ref-group dream">
+        <div class="ref-group-name">夢幻引薦</div>
+        <ul>
+          <li>手上多間老屋、想整批活化的資產型房東</li>
+          <li>正在找長期資產活化夥伴的建設公司</li>
+        </ul>
+      </div>
     </div>
 
     <div class="ref-pitch">
@@ -969,14 +1210,16 @@
 </section>
 
 <!-- 區塊 11：我的人脈圈（規格 §四 #11） -->
-<section class="grey">
+<section class="page grey tight">
   <div class="wrap">
-    <div class="eyebrow">CONTACT SPHERE</div>
+    <div class="page-head">
+      <div class="page-tag">CONTACT SPHERE <span class="num">· 11</span></div>
+    </div>
     <h2>我的人脈圈</h2>
     <div class="sphere-grid">
-      <div class="sphere-item want"><span class="want-tag">最想補齊</span><br>建設公司</div>
-      <div class="sphere-item want"><span class="want-tag">最想補齊</span><br>代書地政士</div>
-      <div class="sphere-item want"><span class="want-tag">最想補齊</span><br>建經公司</div>
+      <div class="sphere-item want"><span class="want-tag">最想補齊</span>建設公司</div>
+      <div class="sphere-item want"><span class="want-tag">最想補齊</span>代書地政士</div>
+      <div class="sphere-item want"><span class="want-tag">最想補齊</span>建經公司</div>
       <div class="sphere-item">建築師</div>
       <div class="sphere-item">銀行房貸窗口</div>
       <div class="sphere-item">室內設計師</div>
@@ -989,9 +1232,11 @@
 </section>
 
 <!-- 區塊 12：下一步很簡單（規格 §四 #12） -->
-<section id="contact">
+<section class="page dark tight" id="contact">
   <div class="wrap">
-    <div class="eyebrow">LET'S TALK</div>
+    <div class="page-head">
+      <div class="page-tag">LET'S TALK <span class="num">· 12</span></div>
+    </div>
     <h2>下一步很簡單</h2>
     <p class="muted">約一場 30 分鐘的線上初談，一起看看手上的房子可以怎麼動起來。</p>
 
@@ -1013,9 +1258,11 @@
 </section>
 
 <!-- 區塊 13：121 提問清單（規格 §四 #13，對應藍本 P14） -->
-<section class="grey" id="questions">
+<section class="page white tight" id="questions">
   <div class="wrap">
-    <div class="eyebrow">ONE-ON-ONE</div>
+    <div class="page-head">
+      <div class="page-tag">ONE-ON-ONE <span class="num">· 13</span></div>
+    </div>
     <h2>121 提問清單</h2>
     <ol>
       <li>你是怎麼開始你的事業的？</li>
