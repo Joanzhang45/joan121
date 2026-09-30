@@ -86,3 +86,53 @@ h1,h2{font-weight:700;text-wrap:balance}
 nav a.nav-cta{background:var(--wine);color:var(--paper);padding:10px 18px}
 nav a.nav-cta:hover{background:#642d33;color:var(--paper);text-decoration:none}
 @media(max-width:720px){nav a.nav-cta{grid-column:1/-1;text-align:center;margin-top:8px}}
+
+/* 組織圖、服務循環、四大角色、經手案子 */
+.org{margin-bottom:64px;text-align:center}
+.org-top{display:flex;flex-direction:column;align-items:center}
+.org-brand{font-family:var(--serif);font-size:20px;letter-spacing:.16em}
+.org-brand::after{content:'';display:block;width:1px;height:22px;background:var(--wine);margin:10px auto 0}
+.org-core{border:1.5px solid var(--wine);padding:16px 44px;background:var(--paper)}
+.org-core b{display:block;font-family:var(--serif);font-size:26px;font-weight:700;letter-spacing:.3em;text-indent:.3em}
+.org-core span{font-size:14px;letter-spacing:.2em;color:var(--wine)}
+.org-top::after{content:'';display:block;width:1px;height:26px;background:var(--wine)}
+.org-cols{display:grid;grid-template-columns:2fr 2fr 1fr;gap:22px;border-top:1px solid var(--wine);padding-top:0}
+.org-cols>div{padding-top:26px;position:relative}
+.org-cols>div::before{content:'';position:absolute;top:0;left:50%;width:1px;height:26px;background:var(--wine)}
+.org-cols h3{font-size:22px;color:var(--wine);margin-bottom:14px}
+.org-cols ul{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:12px}
+.org-cols li{background:var(--paper);border:1px solid var(--line);padding:14px 8px;font-size:14.5px;line-height:1.7}
+.flow{padding-bottom:0}
+.cycle{list-style:none;counter-reset:c;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;border-top:1px solid var(--wine)}
+.cycle li{counter-increment:c;padding:22px 14px 0 0;position:relative}
+.cycle li::before{content:counter(c,decimal-leading-zero);display:block;font-family:Georgia,serif;font-size:28px;color:var(--wine);margin-bottom:8px}
+.cycle li:not(:last-child)::after{content:'→';position:absolute;top:26px;right:12px;color:var(--wine)}
+.cycle b{display:block;font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:6px}
+.cycle span{font-size:14px;color:#59534e;line-height:1.8;display:block}
+.cycle-note{margin-top:22px;font-size:14px;color:var(--muted)}
+.roles-title{margin-top:72px;margin-bottom:24px;font-size:24px}
+.roles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.roles>div{border:1px solid var(--line);background:#faf8f3;padding:22px}
+.roles h4{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--wine);margin:0}
+.role-tag{font-size:14px;font-weight:600;margin:6px 0 12px}
+.roles ul{list-style:none;font-size:14.5px;line-height:2;color:#59534e}
+.roles li::before{content:'・'}
+.flow-quote{margin-top:40px;padding:22px 26px;border-left:3px solid var(--wine);background:var(--wash);font-family:var(--serif);font-size:20px;line-height:1.8}
+.works{padding-bottom:96px}
+.works>h3{font-size:22px;margin-bottom:22px;padding-top:26px;border-top:1px solid var(--line)}
+.works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.works-grid>div{border-top:2px solid var(--wine);padding-top:16px}
+.w-org{font-size:13px;color:var(--wine);letter-spacing:.06em}
+.works-grid h4{font-family:var(--serif);font-size:22px;font-weight:700;margin:6px 0 10px}
+.works-grid p:last-child{font-size:15px;line-height:1.9;color:#59534e}
+.about.section{padding-bottom:64px}
+@media(max-width:1050px){.cycle{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:22px}.roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){
+  .org{margin-bottom:40px}.org-cols{grid-template-columns:1fr;border-top:0;gap:0}
+  .org-cols>div{padding-top:22px}.org-cols>div::before{height:22px}
+  .org-cols h3{font-size:20px;margin-bottom:10px}.org-cols li{font-size:14.5px}
+  .cycle{grid-template-columns:1fr 1fr;row-gap:18px}.cycle li::after{display:none}
+  .roles{grid-template-columns:1fr 1fr;gap:12px}.roles>div{padding:16px}.roles h4{font-size:20px}
+  .roles-title{margin-top:48px;font-size:21px}.flow-quote{font-size:17px;padding:18px}
+  .works-grid{grid-template-columns:1fr}.works{padding-bottom:64px}
+}
